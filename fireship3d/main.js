@@ -1,7 +1,6 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { randFloatSpread } from 'three/src/math/MathUtils';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
@@ -17,6 +16,7 @@ renderer.render(scene,camera);
 const geometry = new THREE.TorusGeometry(10,3,16,100);
 const material = new THREE.MeshStandardMaterial({color:0xFF6347});
 const torus = new THREE.Mesh(geometry,material)
+torus.position.set(5,5,20)
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(15, 5, 10);
@@ -37,6 +37,7 @@ const tyBox = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
   new THREE.MeshBasicMaterial({map:tyTexture})
 )
+tyBox.position.set(0,0,2)
 scene.add(tyBox)
 
 const earthCloudTexture = new THREE.TextureLoader().load('./images/earthcloudmap.jpg');
