@@ -76,9 +76,12 @@ scene.add(torus)
 
 function moveCamera(){
   const t = document.body.getBoundingClientRect().top;
-  camera.position.x = t * -0.01;
-  camera.position.y = t * -0.0001;
-  camera.position.z = t * -0.0001;
+  tyBox.rotation.x += .05
+  tyBox.rotation.y += .023
+  tyBox.rotation.z += .03
+  camera.position.x = t * -0.05;
+  camera.position.y = t * -0.03;
+  camera.position.z = t * -0.02;
 }
 
 document.body.onscroll = moveCamera
