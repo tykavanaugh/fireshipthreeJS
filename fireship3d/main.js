@@ -74,6 +74,15 @@ Array(500).fill().forEach(addStar)
 
 scene.add(torus)
 
+function moveCamera(){
+  const t = document.body.getBoundingClientRect().top;
+  camera.position.x = t * -0.01;
+  camera.position.y = t * -0.0001;
+  camera.position.z = t * -0.0001;
+}
+
+document.body.onscroll = moveCamera
+
 function animate(){
   requestAnimationFrame(animate);
 
