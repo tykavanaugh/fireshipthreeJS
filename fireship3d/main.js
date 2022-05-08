@@ -18,7 +18,7 @@ const geometry = new THREE.TorusGeometry(10,3,16,100);
 const material = new THREE.MeshStandardMaterial({color:0xFF6347});
 const torus = new THREE.Mesh(geometry,material)
 
-const pointLight = new THREE.PointLight(0x009FFF);
+const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(15, 5, 10);
 
 const ambientLight = new THREE.AmbientLight(0xffffff,.5);
@@ -32,12 +32,34 @@ scene.add(lightHelper,gridHelper);
 const spaceTexture = new THREE.TextureLoader().load('./images/spacebgTexture1.jpg');
 scene.background = spaceTexture;
 
-const tyTexture = new THREE.TextureLoader().load('./images/profile.jpeg')
+const tyTexture = new THREE.TextureLoader().load('./images/profile.jpeg');
 const tyBox = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
   new THREE.MeshBasicMaterial({map:tyTexture})
 )
 scene.add(tyBox)
+
+const earthCloudTexture = new THREE.TextureLoader().load('./images/earthcloudmap.jpg');
+const earthCloud = new THREE.Mesh(
+  new THREE.SphereGeometry(3,32,32),
+  new THREE.MeshStandardMaterial({
+    map:earthCloudTexture,
+  })
+)
+earthCloud.position.set(-2,-5,-30)
+scene.add(earthCloud)
+
+const moonTexture = new THREE.TextureLoader().load('./images/moonMap.jpg')
+const moonBumpTexture = new THREE.TextureLoader().load('./images/moonBump.jpg')
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(1,32,32),
+  new THREE.MeshStandardMaterial({
+    map:moonTexture,
+    normalMap:moonBumpTexture
+  })
+)
+moon.position.set(15,15,15)
+scene.add(moon)
 
 function addStar(){
   const geometry = new THREE.SphereGeometry(0.1,24,24);
